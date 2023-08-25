@@ -13,3 +13,4 @@ void decimalToBinary(int inputNumber, bool* boolArray, int arrayLength);
 void printBooleanArray(bool* boolArray, int arrayLength);
 void multiBitAdder(bool* array1, bool* array2, bool* outputArray, int arrayLength);
 void onesComplement(bool* array, int arrayLength);
+void twosComplement (bool* array, int arrayLength);

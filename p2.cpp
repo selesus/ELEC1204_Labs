@@ -51,10 +51,16 @@ void decimalToBinary (int inputNumber, bool* boolArray, int arrayLength)
         inputNumber = -inputNumber;
     }
 
+    /* The LSB is placed in the smallest element, the MSB is placed in the smallest element */
     for (int elementNumber = 0; elementNumber < arrayLength; elementNumber++)
     {
         boolArray[elementNumber] = inputNumber % 2;
         inputNumber = inputNumber / 2;
+    }
+
+    if (negativeFlag)
+    {
+        twosComplement(boolArray, arrayLength);
     }
 }
 
@@ -68,7 +74,16 @@ void onesComplement (bool* array, int arrayLength)
 
 void twosComplement (bool* array, int arrayLength)
 {
-    
+    bool oneInBinary[arrayLength];
+    oneInBinary[0] = 1;
+
+    /* Initialise subsequent elements with 0 */
+    for (int position = arrayLength - 1; position > 0; position--)
+    {
+        oneInBinary[position] = 0;
+    }
+    onesComplement(array, arrayLength);
+    multiBitAdder(array, oneInBinary, array, arrayLength);
 }
 
 void printBoolArray (bool* boolArray, int arrayLength)
@@ -84,10 +99,28 @@ int main(void)
     const int arrayLength = 8;
     bool array1[arrayLength];
     bool array2[arrayLength];
-    bool array3[arrayLength];
-    decimalToBinary(11, array1, arrayLength);
-    decimalToBinary(11, array2, arrayLength);
-    multiBitAdder(array1, array2, array3, arrayLength);
-    printBoolArray(array3, arrayLength);
+    bool outputArray[arrayLength];
+
+    /* 
+     *  Certain Functionalities in the lab not added.
+     *  Perform twosComplement() on input number if the operation is subtract.
+     *  Adding user interface should be relatively simple.
+     */
+    
+    std::cout << "The first input array is:" << std::endl;
+    decimalToBinary(1, array1, arrayLength);
+    printBoolArray(array1, arrayLength);
+    std::cout << '\n';
+
+    std::cout << "The second input array is:" << std::endl;
+    decimalToBinary(-1, array2, arrayLength);
+    printBoolArray(array2, arrayLength);
+    std::cout << '\n';
+
+    std::cout << "The output array is:" << std::endl;
+    multiBitAdder(array1, array2, outputArray, arrayLength);
+    printBoolArray(outputArray, arrayLength);
+    std::cout << '\n';
+
     return 0;
 }
