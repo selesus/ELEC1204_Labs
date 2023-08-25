@@ -5,4 +5,4 @@ This is my code for the advanced programming labs in the University of Southampt
 
 **P2**: A basic digital _circuit simulator_.
 
-**P3**: C++ implementation of imaginary numbers
+**P3**: C++ implementation of imaginary numbers (incomplete).
