@@ -31,6 +31,6 @@ adderOutput singleAdder(bool in1, bool in2, bool cin)
 
 int main(void)
 {
-    printf("test");
+
     return 0;
 }
